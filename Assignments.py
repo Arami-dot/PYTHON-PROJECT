@@ -85,19 +85,19 @@ mycon = sql.connect(
 mycursor= mycon.cursor()
 mycon.autocommit = True   #This is to store information into the database without needing for a reocurrence of the .commit
 
-# mycursor.execute('CREATE DATABASE Bank_App')
+mycursor.execute('CREATE DATABASE Bank_App')
 
-# mycursor.execute('SHOW DATABASES')
-# for db in mycursor:      #db is database
-#     print(db)
-
-
-# mycursor.execute('CREATE TABLE customer_info(id INT(4) PRIMARY KEY AUTO_INCREMENT, fullname VARCHAR(30), email VARCHAR(30) UNIQUE, password VARCHAR(10), acct_no VARCHAR(10)UNIQUE, acct_bal FLOAT(10), date_time DATETIME DEFAULT CURRENT_TIMESTAMP )')
+mycursor.execute('SHOW DATABASES')
+for db in mycursor:      #db is database
+    print(db)
 
 
-# mycursor.execute('SHOW TABLES')
-# for table in mycursor:
-#     print('TABLE')   
+mycursor.execute('CREATE TABLE customer_info(id INT(4) PRIMARY KEY AUTO_INCREMENT, fullname VARCHAR(30), email VARCHAR(30) UNIQUE, password VARCHAR(10), acct_no VARCHAR(10)UNIQUE, acct_bal FLOAT(10), date_time DATETIME DEFAULT CURRENT_TIMESTAMP )')
+
+
+mycursor.execute('SHOW TABLES')
+for table in mycursor:
+    print('TABLE')   
 
 
 
@@ -119,72 +119,72 @@ class Bank:
      #. Exit
        ''')
 
-   #    choice = input ('Enter your choice:')
+      choice = input ('Enter your choice:')
 
-   #    if choice == '1':
-   #       print('Login')
-   #       self.Login()
+      if choice == '1':
+         print('Login')
+         self.Login()
       
-   #    elif choice == '2':
+      elif choice == '2':
         
-   #       print('Signup')
-   #       self.Signup()
+         print('Signup')
+         self.Signup()
 
-   #    elif choice == '3': 
+      elif choice == '3': 
          
-   #       print('Buy_Airtime')
-   #       self.Buy_Airtime()
+         print('Buy_Airtime')
+         self.Buy_Airtime()
 
-   #    elif choice == '4':
+      elif choice == '4':
          
-   #       print('Buy_Data')
-   #       self.Buy_Data()
+         print('Buy_Data')
+         self.Buy_Data()
 
-   #    elif choice == '#':
-   #       print('Thanks for your patronage')
-   #       return
-   #    else:
-   #       print('Invalid USSD')
+      elif choice == '#':
+         print('Thanks for your patronage')
+         return
+      else:
+         print('Invalid USSD')
 
-   # def Login(self):
-   #  print(f'welcome to {self.Bank_name}, your account number is {self.account_number}')
-   #  self.landing_page()
+   def Login(self):
+    print(f'welcome to {self.Bank_name}, your account number is {self.account_number}')
+    self.landing_page()
 
-   # def Signup(self):
-   #    print('please fill in your details') 
-   #    fullname = input('Enter your Full name:')
-   #    email = input('Enter your email:')
-   #    password = input('Enter your password:')
-   #    confirm_password = input('Enter your password:')
-   #    if confirm_password == password:
-   #     print('Correct Password')
-   #    else:
-   #      print('Wrong Input, try again')
+   def Signup(self):
+      print('please fill in your details') 
+      fullname = input('Enter your Full name:')
+      email = input('Enter your email:')
+      password = input('Enter your password:')
+      confirm_password = input('Enter your password:')
+      if confirm_password == password:
+       print('Correct Password')
+      else:
+        print('Wrong Input, try again')
 
-   #    acct_no = random.randint (2100000000, 2199999999)
-   #    acct_bal = 0
+      acct_no = random.randint (2100000000, 2199999999)
+      acct_bal = 0
    
-   #    self.account_number = acct_no
-   #    self.balance = acct_bal
+      self.account_number = acct_no
+      self.balance = acct_bal
 
-      # query = 'INSERT into customer_info (fullname, email, password, acct_no, acct_bal) VALUE (%s, %s, %s, %s, %s)'
-      # values= (fullname, email, password, acct_no,  acct_bal)
+      query = 'INSERT into customer_info (fullname, email, password, acct_no, acct_bal) VALUE (%s, %s, %s, %s, %s)'
+      values= (fullname, email, password, acct_no,  acct_bal)
 
-      # mycursor.execute(query, values)
+      mycursor.execute(query, values)
       
-      # print('Account Created Succesfully') 
+      print('Account Created Succesfully') 
    
    
-#    def Buy_Airtime(self):  
-#       print('Enter your account number')
-#       self.landing_page()
+   def Buy_Airtime(self):  
+      print('Enter your account number')
+      self.landing_page()
 
-#    def Buy_Data(self):
-#       print('How much data?')
-#       self.landing_page()
+   def Buy_Data(self):
+      print('How much data?')
+      self.landing_page()
    
-# bank = Bank()
-# bank.landing_page()
+bank = Bank()
+bank.landing_page()
          
 
 def login():
@@ -223,5 +223,6 @@ def deposit():
     print(f'Your new account balance is {new_bal}')
   else:
     print('Invalid password')
+
 
 deposit()
